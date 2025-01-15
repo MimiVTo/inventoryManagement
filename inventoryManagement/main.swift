@@ -284,13 +284,15 @@ func adminCode(){
 }
 
 func accessAdmin(){
+    //got the code and now has access to the admin menu
     print("Welcome to the Admin menu! Lets us know how we can help you (Enter number of selection):")
     print("1) Restock inventory \n2) Generate report \n3) Check number of items \n4) Quit admin menu")
             
+    //user chooses where they go
     if let userInput = readLine(), let numberInt = Int(userInput), numberInt<5{
         if numberInt == 1{
             print("What would you like to restock? (Enter number of selection): \n1) Cereal \n2) Milk \n3) Syrup \n4) Cups")
-            
+            //Restocking and choosing which one to restock
             if let userInput = readLine(), let numberInt = Int(userInput), numberInt<5{
                 if numberInt == 1{
                     print("How many units of cup would you like to restock?: ")
@@ -324,30 +326,37 @@ func accessAdmin(){
             else{
                 print("Try again!")
             }
+            //go back to admin menu
             accessAdmin()
         }
         else if numberInt == 2{
+            //Showing how many is in stock right now as a report
             print("Summary Report: \nRemaining cereals: \(storeCereal) \nRemaining milks: \(storeMilk) \nRemaining syrups: \(storeSyrup) \nRemaining cups: \(storeCups)")
             print("Remaining Inventory: \(storeCereal+storeMilk+storeSyrup+storeCups)")
             print("Total sales: \(totalCost)")
-            
+            //Back to admin menu
             accessAdmin()
         }
         else if numberInt == 3{
+            //Checking individual stock
             print("What item would you like to check if it's in stock? (Enter number of selection)")
             print("1) Cereal \n2) Milk \n3) Syrup \n4) Cups")
             
             if let userInput = readLine(), let numberInt = Int(userInput), numberInt<5{
                 if numberInt == 1{
+                    //checking cereal
                     print("There are \(storeCereal) cereals left.")
                 }
                 else if numberInt == 2{
+                    //checking milk
                     print("There are \(storeMilk) milks left.")
                 }
                 else if numberInt == 3{
+                    //checking syrup
                     print("There are \(storeSyrup) syrups left.")
                 }
                 else if numberInt == 4{
+                    //checking cups
                     print("There are \(storeCups) cups left.")
                 }
                 else{
@@ -361,6 +370,7 @@ func accessAdmin(){
             accessAdmin()
         }
         else if numberInt == 4{
+            //quitting admin menu
             print("Going back!")
             startPage()
         }
