@@ -34,7 +34,14 @@ var userCups: Int = 0
 //Access Code
 var accessCode = 1029
 
-startPage()
+//Checks if its the user's first time
+var firstTime = true
+
+if firstTime==true{
+    startPage()
+    firstTime = false
+}
+
 
 //FUNCTIONS-----------------------------------
 
@@ -78,15 +85,17 @@ func startPage(){
 }
 
 func addItem(){
+    //Printing the question and asking user to select
     print("What would you like to add to cart? (Enter number of selection)")
     print("1) Cereal \n2) Milk \n3) Syrup \n4) Cups")
     
     if let userInput = readLine(), let numberInt = Int(userInput), numberInt<5{
+        //User selection
         if numberInt == 1{
             print("How many cereal(s) would you like to add to your cart?:")
             
             if let input = readLine(), let numberInput = Int(input), numberInput<(storeCereal+1){
-                
+                //Adding cereal
                 userCereal += numberInput
                 storeCereal -= numberInput
                 totalCost += cerealCost * Double(numberInput)
@@ -94,14 +103,15 @@ func addItem(){
                 print("Your total is $\(totalCost)")
             }
             else{
+                //Cant go over the stock
                 print("Too much!")
             }
         }
-        if numberInt == 2{
+        else if numberInt == 2{
             print("How many milk(s) would you like to add to your cart?:")
             
             if let input = readLine(), let numberInput = Int(input), numberInput<(storeMilk+1){
-                
+                //Adding milk
                 userMilk += numberInput
                 storeMilk -= numberInput
                 totalCost += milkCost * Double(numberInput)
@@ -109,14 +119,15 @@ func addItem(){
                 print("Your total is $\(totalCost)")
             }
             else{
+                //Cant go over stock
                 print("Too much!")
             }
         }
-        if numberInt == 3{
+        else if numberInt == 3{
             print("How many syrup(s) would you like to add to your cart?:")
             
             if let input = readLine(), let numberInput = Int(input), numberInput<(storeSyrup+1){
-                
+                //Adding Syrup
                 userSyrup += numberInput
                 storeSyrup -= numberInput
                 totalCost += syrupCost * Double(numberInput)
@@ -124,14 +135,15 @@ func addItem(){
                 print("Your total is $\(totalCost)")
             }
             else{
+                //Cant go over stock
                 print("Too much!")
             }
         }
-        if numberInt == 4{
+        else if numberInt == 4{
             print("How many cup(s) would you like to add to your cart?:")
             
             if let input = readLine(), let numberInput = Int(input), numberInput<(storeCups+1){
-                
+                //Adding Cups
                 userCups += numberInput
                 storeCups -= numberInput
                 totalCost += cupsCost * Double(numberInput)
@@ -139,18 +151,20 @@ func addItem(){
                 print("Your total is $\(totalCost)")
             }
             else{
+                //Cant go over stock
                 print("Too much!")
             }
         }
     }
     else{
+        //Went over 4
         print("Invalid response")
     }
-    
     startPage()
 }
 
 func removeItem(){
+    //Printing the question and asking user to select
     print("What would you like to remove from cart? (Enter number of selection):")
     print("1) Cereal \n2) Milk \n3) Syrup \n4) Cups")
     
@@ -159,7 +173,7 @@ func removeItem(){
             print("How many cereals would you like to remove?")
             
             if let input = readLine(), let numberInput = Int(input), numberInput<userCereal{
-                
+                //Remove cereal
                 storeCereal += numberInput
                 userCereal -= numberInput
                 totalCost -= cerealCost * Double(numberInput)
@@ -167,14 +181,15 @@ func removeItem(){
                 print("Your total is $\(totalCost)")
             }
             else{
+                //putting back more than they have
                 print("You don't have that much bro!")
             }
         }
-        if numberInt == 2{
+        else if numberInt == 2{
             print("How many milks would you like to remove?")
             
             if let input = readLine(), let numberInput = Int(input), numberInput<userMilk{
-                
+                //Removing milk
                 storeMilk += numberInput
                 userMilk -= numberInput
                 totalCost -= milkCost * Double(numberInput)
@@ -182,14 +197,15 @@ func removeItem(){
                 print("Your total is $\(totalCost)")
             }
             else{
+                //putting back more than they have
                 print("You don't have that much bro!")
             }
         }
-        if numberInt == 3{
+        else if numberInt == 3{
             print("How many syrups would you like to remove?")
             
             if let input = readLine(), let numberInput = Int(input), numberInput<userSyrup{
-                
+                //Removing Syrup
                 storeSyrup += numberInput
                 userSyrup -= numberInput
                 totalCost -= syrupCost * Double(numberInput)
@@ -197,19 +213,24 @@ func removeItem(){
                 print("Your total is $\(totalCost)")
             }
             else{
+                //putting back more than they have
                 print("You don't have that much bro!")
             }
         }
-        if numberInt == 4{
+        else if numberInt == 4{
             print("How many cups would you like to remove?")
             
             if let input = readLine(), let numberInput = Int(input), numberInput<userCups{
-                
+                //Remove Cups
                 storeCups += numberInput
                 userCups -= numberInput
                 totalCost -= cupsCost * Double(numberInput)
                 print("Removed \(input) from the cart.")
                 print("Your total is $\(totalCost)")
+            }
+            else{
+                //putting back more than they have
+                print("You don't have that much bro!")
             }
         }
     }
@@ -225,24 +246,23 @@ func checkItems(){
     print("What item would you like to check if it's in stock? (Enter number of selection)")
     print("1) Cereal \n2) Milk \n3) Syrup \n4) Cups")
     
+    //Tells how much is left of an item
     if let userInput = readLine(), let numberInt = Int(userInput), numberInt<5{
         if numberInt == 1{
             print("There are \(storeCereal) cereals left.")
         }
-        if numberInt == 2{
+        else if numberInt == 2{
             print("There are \(storeMilk) milks left.")
         }
-        if numberInt == 3{
+        else if numberInt == 3{
             print("There are \(storeSyrup) syrups left.")
         }
-        if numberInt == 4{
+        else if numberInt == 4{
             print("There are \(storeCups) cups left.")
-        }
-        else{
-            print("Invalid response")
         }
     }
     else{
+        //User put in a number that isn't an option
         print("Invalid response")
     }
     
@@ -251,7 +271,7 @@ func checkItems(){
 
 func adminCode(){
     print("Enter Admin ID (Four numbers):")
-    
+    //Asking for player input
     if let userInput = readLine(), let numberInt = Int(userInput){
         if Int(userInput) == numberInt{
             accessAdmin()
@@ -279,21 +299,21 @@ func accessAdmin(){
                         storeCereal += numberInput
                     }
                 }
-                if numberInt == 2{
+                else if numberInt == 2{
                     print("How many units of cup would you like to restock?: ")
                     
                     if let input = readLine(), let numberInput = Int(input){
                         storeMilk += numberInput
                     }
                 }
-                if numberInt == 3{
+                else if numberInt == 3{
                     print("How many units of cup would you like to restock?: ")
                     
                     if let input = readLine(), let numberInput = Int(input){
                         storeSyrup += numberInput
                     }
                 }
-                if numberInt == 4{
+                else if numberInt == 4{
                     print("How many units of cup would you like to restock?: ")
                     
                     if let input = readLine(), let numberInput = Int(input){
@@ -306,14 +326,14 @@ func accessAdmin(){
             }
             accessAdmin()
         }
-        if numberInt == 2{
+        else if numberInt == 2{
             print("Summary Report: \nRemaining cereals: \(storeCereal) \nRemaining milks: \(storeMilk) \nRemaining syrups: \(storeSyrup) \nRemaining cups: \(storeCups)")
             print("Remaining Inventory: \(storeCereal+storeMilk+storeSyrup+storeCups)")
             print("Total sales: \(totalCost)")
             
             accessAdmin()
         }
-        if numberInt == 3{
+        else if numberInt == 3{
             print("What item would you like to check if it's in stock? (Enter number of selection)")
             print("1) Cereal \n2) Milk \n3) Syrup \n4) Cups")
             
@@ -321,13 +341,13 @@ func accessAdmin(){
                 if numberInt == 1{
                     print("There are \(storeCereal) cereals left.")
                 }
-                if numberInt == 2{
+                else if numberInt == 2{
                     print("There are \(storeMilk) milks left.")
                 }
-                if numberInt == 3{
+                else if numberInt == 3{
                     print("There are \(storeSyrup) syrups left.")
                 }
-                if numberInt == 4{
+                else if numberInt == 4{
                     print("There are \(storeCups) cups left.")
                 }
                 else{
@@ -340,7 +360,7 @@ func accessAdmin(){
             
             accessAdmin()
         }
-        if numberInt == 4{
+        else if numberInt == 4{
             print("Going back!")
             startPage()
         }
