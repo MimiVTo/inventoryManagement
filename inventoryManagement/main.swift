@@ -391,6 +391,5 @@ func checkOut(){
     print("Milks: \(userMilk)")
     print("Syrups: \(userSyrup)")
     print("Cups: \(userCups)")
-        
     print("Your grand total including tax (9.25%) is: \(totalCost+(totalCost*0.0925))")
 }
