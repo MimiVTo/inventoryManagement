@@ -386,10 +386,12 @@ func accessAdmin(){
 
     
 func checkOut(){
+    var grandTotal = totalCost+(totalCost*0.0925)
+    
     print("Thanks for shopping with us!\nYou purchases the following:")
     print("Cereals: \(userCereal)")
     print("Milks: \(userMilk)")
     print("Syrups: \(userSyrup)")
     print("Cups: \(userCups)")
-    print("Your grand total including tax (9.25%) is: \(totalCost+(totalCost*0.0925))")
+    print("Your grand total including tax (9.25%) is: \(grandTotal)")
 }
