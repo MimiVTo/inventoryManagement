@@ -100,7 +100,10 @@ func addItem(){
                 storeCereal -= numberInput
                 totalCost += cerealCost * Double(numberInput)
                 print("You have added " + input + " cereal(s) to your cart.")
-                print("Your total is $\(totalCost)")
+                
+                let doubleStr = String(format: "%.2f", totalCost)
+                
+                print("Your total is $\(doubleStr)")
             }
             else{
                 //Cant go over the stock
@@ -116,7 +119,10 @@ func addItem(){
                 storeMilk -= numberInput
                 totalCost += milkCost * Double(numberInput)
                 print("You have added " + input + " milk(s) to your cart.")
-                print("Your total is $\(totalCost)")
+                
+                let doubleStr = String(format: "%.2f", totalCost)
+                
+                print("Your total is $\(doubleStr)")
             }
             else{
                 //Cant go over stock
@@ -132,7 +138,10 @@ func addItem(){
                 storeSyrup -= numberInput
                 totalCost += syrupCost * Double(numberInput)
                 print("You have added " + input + " syrup(s) to your cart.")
-                print("Your total is $\(totalCost)")
+                
+                let doubleStr = String(format: "%.2f", totalCost)
+                
+                print("Your total is $\(doubleStr)")
             }
             else{
                 //Cant go over stock
@@ -148,7 +157,10 @@ func addItem(){
                 storeCups -= numberInput
                 totalCost += cupsCost * Double(numberInput)
                 print("You have added " + input + " cup(s) to your cart.")
-                print("Your total is $\(totalCost)")
+                
+                let doubleStr = String(format: "%.2f", totalCost)
+                
+                print("Your total is $\(doubleStr)")
             }
             else{
                 //Cant go over stock
@@ -178,7 +190,10 @@ func removeItem(){
                 userCereal -= numberInput
                 totalCost -= cerealCost * Double(numberInput)
                 print("Removed \(input) from the cart.")
-                print("Your total is $\(totalCost)")
+                
+                let doubleStr = String(format: "%.2f", totalCost)
+                
+                print("Your total is $\(doubleStr)")
             }
             else{
                 //putting back more than they have
@@ -194,7 +209,10 @@ func removeItem(){
                 userMilk -= numberInput
                 totalCost -= milkCost * Double(numberInput)
                 print("Removed \(input) from the cart.")
-                print("Your total is $\(totalCost)")
+                
+                let doubleStr = String(format: "%.2f", totalCost)
+                
+                print("Your total is $\(doubleStr)")
             }
             else{
                 //putting back more than they have
@@ -210,7 +228,10 @@ func removeItem(){
                 userSyrup -= numberInput
                 totalCost -= syrupCost * Double(numberInput)
                 print("Removed \(input) from the cart.")
-                print("Your total is $\(totalCost)")
+                
+                let doubleStr = String(format: "%.2f", totalCost)
+                
+                print("Your total is $\(doubleStr)")
             }
             else{
                 //putting back more than they have
@@ -226,7 +247,10 @@ func removeItem(){
                 userCups -= numberInput
                 totalCost -= cupsCost * Double(numberInput)
                 print("Removed \(input) from the cart.")
-                print("Your total is $\(totalCost)")
+                
+                let doubleStr = String(format: "%.2f", totalCost)
+                
+                print("Your total is $\(doubleStr)")
             }
             else{
                 //putting back more than they have
@@ -388,10 +412,12 @@ func accessAdmin(){
 func checkOut(){
     var grandTotal = totalCost+(totalCost*0.0925)
     
+    let doubleStr = String(format: "%.2f", grandTotal)
+    
     print("Thanks for shopping with us!\nYou purchases the following:")
     print("Cereals: \(userCereal)")
     print("Milks: \(userMilk)")
     print("Syrups: \(userSyrup)")
     print("Cups: \(userCups)")
-    print("Your grand total including tax (9.25%) is: \(grandTotal)")
+    print("Your grand total including tax (9.25%) is: \(doubleStr)")
 }
